@@ -1,0 +1,222 @@
+:root {
+    --primary: #FF8B94;   /* Soft Red */
+    --secondary: #A8E6CF; /* Mint Green */
+    --accent: #FFD3B6;    /* Pale Orange */
+    --bg: #DCEDC1;        /* Light Yellow-Green */
+    --text: #4A4A4A;      /* Dark Gray */
+    --white: #FFFFFF;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    --radius: 24px;
+    --font-main: 'Nunito', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+
+.app-header h1 {
+    font-weight: 900;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.nav-btn {
+    background: var(--secondary);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--white);
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-btn:active {
+    transform: scale(0.9);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Container */
+.container {
+    padding: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+/* Grid Layouts */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+/* Cards */
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: popIn 0.5s ease-out backwards;
+}
+
+.card:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.card:active {
+    transform: scale(0.95);
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.card-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+/* Detail View */
+.detail-view {
+    text-align: center;
+    animation: slideUp 0.5s ease-out;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.detail-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.detail-title {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.action-btn {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #E57373;
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #E57373;
+}
+
+/* Animations */
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Loading Overlay */
+#loading-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    font-size: 4rem;
+    animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .card-icon {
+        font-size: 5rem;
+    }
+}

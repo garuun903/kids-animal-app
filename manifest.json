@@ -1,0 +1,16 @@
+{
+    "name": "Animal Friends",
+    "short_name": "Animals",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#DCEDC1",
+    "theme_color": "#A8E6CF",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "assets/icons/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}

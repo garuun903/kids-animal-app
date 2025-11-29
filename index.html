@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Friends</title>
+    <meta name="description" content="A fun animal learning app for kids!">
+    <meta name="theme-color" content="#A8E6CF">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+</head>
+
+<body>
+    <div id="app">
+        <header class="app-header">
+            <button id="back-btn" class="nav-btn hidden" aria-label="Go Back">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <h1>Animal Friends</h1>
+            <button id="sound-toggle" class="nav-btn" aria-label="Toggle Sound">
+                <span id="sound-icon">🔊</span>
+            </button>
+        </header>
+
+        <main id="main-content" class="container">
+            <!-- Dynamic Content Will Be Injected Here -->
+        </main>
+
+        <div id="loading-overlay" class="hidden">
+            <div class="spinner">🦁</div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('serviceWorker.js')
+                    .then(reg => console.log('SW registered!', reg))
+                    .catch(err => console.log('SW failed', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
